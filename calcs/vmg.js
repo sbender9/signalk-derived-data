@@ -3,18 +3,17 @@ module.exports = function (app) {
     group: 'course data',
     optionKey: 'vmg_Course',
     title:
-      'Velocity Made Good to Course (based on courseGreatCircle.nextPoint.bearingTrue heading true and speedOverGround)',
+      'Velocity Made Good towards next waypoint (based on courseGreatCircle.nextPoint.bearingTrue courseOverGroundTrue and speedOverGround)',
     derivedFrom: [
       'navigation.courseGreatCircle.nextPoint.bearingTrue',
-      'navigation.headingTrue',
+      'navigation.courseOverGroundTrue',
       'navigation.speedOverGround'
     ],
-    calculator: function (bearingTrue, headingTrue, speedOverGround) {
-      var angle = Math.abs(bearingTrue - headingTrue)
+    calculator: function (bearingTrue, cogTrue, speedOverGround) {
       return [
         {
           path: 'navigation.courseGreatCircle.nextPoint.velocityMadeGood',
-          value: Math.cos(bearingTrue - headingTrue) * speedOverGround
+          value: Math.cos(bearingTrue - cogTrue) * speedOverGround
         }
       ]
     }

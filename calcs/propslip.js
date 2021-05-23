@@ -26,10 +26,17 @@ module.exports = function (app, plugin) {
         var pitch = app.getSelfPath(
           'propulsion.' + instance + '.drive.propeller.pitch.value'
         )
+        
+        if(revolutions > 0.0){
+          slip = 1.0 - stw * gearRatio / (revolutions * pitch)
+        }else{
+          slip = 1.0
+        } 
+
         return [
           {
             path: 'propulsion.' + instance + '.drive.propeller.slip',
-            value: 1 - stw * gearRatio / (revolutions * pitch)
+            value: slip
           }
         ]
       }

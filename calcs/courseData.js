@@ -49,7 +49,7 @@ module.exports = function (app) {
 
       // Same as above, but magnetic
       let trkBearingMagnetic =
-        !trkBearingTrue || !magneticVariation
+          !trkBearingTrue || !magneticVariation
           ? null
           : trkBearingTrue - magneticVariation
 
@@ -60,7 +60,10 @@ module.exports = function (app) {
       let brg = !pos || !pathEnd ? null : pos.initialBearingTo(pathEnd)
 
       // Same as above, but magnetic
-      let brgMag = !brg || !magneticVariation ? null : brg - magneticVariation
+      let brgMag =
+          !brg || !magneticVariation
+              ? null
+              : brg - magneticVariation
 
       // ** Distance from vessel to previousPoint **
       let dtp = !pos || !pathStart ? null : pathStart.distanceTo(pos)

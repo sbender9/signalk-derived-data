@@ -53,3 +53,37 @@ module.exports = function(app) {
   };
 }
 ```
+
+## Calculation return values
+
+There are basically 2 formats of return value from your calculation. 
+
+1. Path and values
+Return an array of JSON objects containing the `path` and `value`. Like the example above.
+
+2. Values and meta
+In the case you have your own derived data, with custom path or custom units you can return a more detailed response. It is a JSON object with `values`and `meta` key. These follow the spec from [SignalK](https://signalk.org/specification/1.5.0/doc/data_model_metadata.html). 
+
+An example is given to illustrate the format
+
+```
+return {
+    "values": [
+        {
+            "path": "my.custom.path",
+            "value": 1.5707963267948966
+        }
+    ],
+    "meta": [
+        {
+            "path": "my.custom.path",
+            "value": {
+                "units": "rad",
+                "description": "see spec for details",
+                "displayName": "custom angle",
+                "shortName": "custom angle"
+            }
+        }
+    ]
+}
+```

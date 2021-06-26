@@ -30,6 +30,7 @@ It currently calculates:
  * Moon illumination and times (based on time and navigation.position)
  * Sunlight Times: sunrise, sunriseEnd, goldenHourEnd, solarNoon, goldenHour, sunsetStart, sunset, dusk, nauticalDusk, night, nadir, nightEnd, nauticalDawn, dawn (based on time and navigation.position)
  * Outside Heat Index (based on temperature and humidity)
+ * Pressure Above Sea Level
 
 To add new calculations, just create a new file under the `./calcs` directory.
 
